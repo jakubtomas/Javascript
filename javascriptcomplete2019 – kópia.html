@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link>
+    <meta charset="UTF-8">
+    <title>Javascript</title>
+</head>
+
+<style>
+    article {
+        background-color: #f6be00;
+        margin: 0 auto;
+        border-radius: 1.25em;
+        width: 33%;
+
+
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+
+
+    }
+
+    .hlavny, .first {
+        text-align: center;
+        background-color: #985f0d;
+        width: 80%;
+        margin: 0 auto;
+        padding: 0 auto;
+
+    }
+
+    .one, .second {
+
+        background-color: #4CAF50;
+        width: 45%;
+        margin: 0 auto;
+        padding: 0 auto;
+        display: inline-block;
+
+    }
+
+    .second {
+        background-color: #39b3d7;
+    }
+
+    .count {
+
+        margin: 0 auto;
+        padding: 0 auto;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .count {
+        display: inline-block;
+    }
+
+    em {
+        display: inline-block;
+        font-style: italic;
+
+    }
+
+    .button {
+        background-color: #c7254e;
+        border: 5px solid black;
+        display: inline-block;
+    }
+
+    .button:hover {
+        background-color: #ffff00;
+        border: 5px solid black;
+    }
+
+    .addscore {
+        border-radius: 1px;
+        border: 4px solid black;
+        background-color: #47a447;
+    }
+
+    .addscore:hover {
+        background-color: greenyellow;
+        border-radius: 6px;
+    }
+</style>
+<body>
+<!--<h1>Header</h1>
+<p id="oneText">somethink about myself....</p>
+<p id="secondText">somethink about myself....</p>-->
+
+
+<div class="first">
+    <h2 id="playerPlay">Teraz je na rade Player Click hod kockou tu</h2>
+    <h1 id="numberPlayer">1</h1>
+
+</div>
+
+<div class="hlavny">
+
+
+    <div class="one">
+        <h2 id="p1" class="player">Player 1 </h2>
+        <em>score</em>
+        <h4 id="score1" class="count">0</h4>
+        <br>
+        <em>limit score</em>
+        <h5 class="temporaryScorePlayer1 count">1</h5>
+    </div>
+
+
+    <div class="second">
+        <h2 id="p2" class="player">Player 2 </h2>
+        <em>score</em>
+        <h4 id="score2" class="count">0</h4>
+        <br>
+        <em>limit score</em>
+        <h5 class="temporaryScorePlayer2 count">1</h5>
+
+    </div>
+
+
+    <div>
+        <p class="addscore count" id="addToScore">Add to to score</p>
+        <p class="button" id="button">hod kockou</p>
+    </div>
+
+    <h1 id="result">Hrajeme</h1>
+</div>
+
+
+</body>
+
+<script>
+    var scorePlayerOne = 0;
+    var scorePlayerTwo = 0;
+    var limitScorePlayerOne = 0;
+    var limitScorePlayerTwo = 0;
+
+
+    var button = document.getElementById("button"); // 1 step
+    var numberPlayer = document.getElementById("numberPlayer");
+
+    var x = numberPlayer.textContent;
+    button.onclick = addScore;
+
+
+    //console.log(x);
+
+    function addScore() {
+        console.log(x);
+        var generateNumber = Math.floor(Math.random() * 15);// generatenubmer
+
+        if (generateNumber == 0) {
+            generateNumber = 1;
+        }
+        console.log(" generovanie cisla " + generateNumber);
+        if (x == 1) {
+
+
+            scorePlayerOne = scorePlayerOne + generateNumber;
+            console.log(" vygenerovalo playerone" + scorePlayerOne);
+            document.getElementById("score1").innerText = scorePlayerOne;
+            x = 2;
+
+            document.getElementById("numberPlayer").innerText = x;
+        } else {
+            scorePlayerTwo = scorePlayerTwo + generateNumber;
+
+            console.log(" vygenerovalo druhe " + scorePlayerTwo);
+            document.getElementById("score2").innerText = scorePlayerTwo;
+            x = 1;
+            document.getElementById("numberPlayer").innerText = x;
+
+        }
+
+        if (scorePlayerOne > 100) {
+            document.getElementById("result").innerHTML = "Player one win with " + scorePlayerOne + "";
+
+        }
+
+        if (scorePlayerTwo > 100) {
+            document.getElementById("result").innerHTML = "Player two win with " + scorePlayerOne + "";
+
+        }
+
+
+        // 1. vytvorim si udalost na button
+        //2 po kliknuti budem pridavat body into limit score
+        // .. ak kliknem na dalsiee tlacidlo body mi prida
+        // do original score a   je na rade player 2
+        // zase do okola až kym nebude mat jeden hrac 100 bodov t
+        // vyhraje
+
+
+        // if I click on the element with id kocka
+        // add score to limit score and  pripocitav next and a click
+        // add score to original this limit score add
+        // but if you have for example limit score 9
+        //and next number generate null you lose your all limit score
+        // after this go on next player
+    }
+
+
+    // add score player 2
+    //var playerTwo = document.getElementById("p2");
+    // playerTwo.onclick= addScorePlayerTwo;
+
+    /* var playerOne = document.getElementById("p1");
+     playerOne.onclick=  addScorePlayerOne();
+
+     console.log(playerOne);*/
+
+
+    /*function addScorePlayerTwo() {
+
+        scorePlayerTwo = scorePlayerTwo + Math.floor(Math.random() * 6);
+        document.getElementById("score2").innerHTML = scorePlayerTwo;
+
+        console.log(scorePlayerTwo);
+
+    }
+
+
+    function  addScorePlayerOne() {
+        scorePlayerOne = scorePlayerOne + Math.floor(Math.random() * 6);
+        console.log(scorePlayerOne);
+        document.getElementById("score1").innerHTML = scorePlayerOne;
+        console.log(document.getElementById("score1"))
+    }*/
+    // add score player 1
+
+
+    //  var browserList = document.getElementById("browser"),
+    //    newItem = document.createElement("li");  // create new element
+
+    //newItem.textContent = "page loaded bitch";   // what textConten
+    //   browserList.appendChild(newItem);  // create new child
+    // what is this line what means this line okey
+    // mozes vytvorit html elementy
+
+    //document.body.addEventListener("click", clickedIt);
+
+    /*function clickedIt() {
+        var userList = document.getElementById("user"),
+            newItem = document.createElement("li");
+
+
+        newItem.textContent = "page loade bitch";
+        userList.appendChild(newItem);
+    }
+
+    function addMessage(elementId, message) {
+        var browserList = document.getElementById(elementId),
+            newItem = document.createElement("li");
+
+        newItem.textContent = message;
+        browserList.appendChild(newItem);
+
+    }*/
+
+    //addMessage("browser", "sprava poslana funkciou");
+
+
+    //// dasia
+    // document.body.addEventListener("click", function () {
+    //  addMessage("user" , "cliknutie skuska")
+
+
+    //});
+
+    // document.body.addEventListener("dblclick", function () {
+    //addMessage( "user", "this is message double click webpage")
+
+
+    //});
+
+    /*  document.body.addEventListener("keypress", function keyboardedIt(event) {
+         // addMessage("user", event.key);
+
+          var oldLeft = getComputedStyle(document.body).left,
+              newLeft;
+
+
+          oldLeft = parseInt(oldLeft, 10);
+
+
+
+          if (event.key === "a") {
+             // console.log("a");
+              newLeft = oldLeft - 10;
+              //addMessage("user", "Ideme do lava")
+          }else if (event.key === "d") {
+              // addMessage("user", "Ideme do prava")
+             // console.log("d");
+              newLeft = oldLeft + 10;
+          }
+
+          document.body.style.left = newLeft + "px";
+
+
+      });
+
+      window.addEventListener("beforeunload", function (event) {
+          addMessage("browser", " vazne chces opustit tuto stranku ")
+
+      });
+
+*/
+
+    /*  var x = document.getElementById("oneText").innerText = "pridaasdfajsôdfl som text";
+      var y = document.getElementById("secondText");
+
+      y.innerHTML = "ahojte ludia";
+*/
+
+
+</script>
+</html>
